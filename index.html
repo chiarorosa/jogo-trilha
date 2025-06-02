@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo da Trilha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'primary': '#6D28D9', // Vibrant Purple (e.g., violet-700)
+              'primary-light': '#8B5CF6', // Lighter Purple (e.g., violet-500)
+              'primary-dark': '#5B21B6', // Darker Purple (e.g., violet-800)
+              'secondary': '#F3F4F6', // Light Gray (e.g., gray-100 for card backgrounds)
+              'text-light': '#F9FAFB', // Very Light Gray / White for text on dark backgrounds
+              'text-dark': '#1F2937',  // Dark Gray (e.g., gray-800 for text on light backgrounds)
+              
+              'player1-color': '#374151', // Dark Gray (gray-700 for Player 1 pieces/accents)
+              'player1-color-dark': '#1F2937', // Darker Gray (gray-800)
+              'player2-color': '#F9FAFB', // White/Very Light Gray (gray-50 for Player 2 pieces)
+              'player2-color-stroke': '#4B5563', // Medium Gray (gray-600 for Player 2 piece stroke)
+
+              'board-wood-bg': '#D2B48C',      // Tan - for board background
+              'board-wood-lines': '#8B4513',   // SaddleBrown - for board lines
+              'board-wood-points': '#A0522D',  // Sienna - for empty board points
+
+              'highlight-valid': 'rgba(74, 222, 128, 0.4)', // Green-400 with opacity
+              'highlight-selected': 'rgba(250, 204, 21, 0.5)', // Yellow-400 with opacity
+              'highlight-remove': 'rgba(239, 68, 68, 0.4)', // Red-500 with opacity
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-secondary">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

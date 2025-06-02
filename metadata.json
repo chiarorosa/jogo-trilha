@@ -1,0 +1,6 @@
+{
+  "name": "Jogo da Trilha",
+  "description": "Uma implementação web do clássico jogo de tabuleiro Trilha (também conhecido como Moinho ou Nine Men's Morris). Divirta-se jogando este jogo de estratégia!",
+  "requestFramePermissions": [],
+  "prompt": ""
+}
