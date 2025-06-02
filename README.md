@@ -2,6 +2,10 @@
 
 Bem-vindo ao Jogo da Trilha! Esta é uma implementação web do clássico jogo de tabuleiro estratégico, também conhecido como Moinho, Morris, Merels, ou Nine Men's Morris. Desenvolvido com React, TypeScript e Tailwind CSS, este projeto oferece uma interface moderna e responsiva para jogar contra outro jogador localmente (PvP) ou contra uma Inteligência Artificial (PvA).
 
+## Preview da implementação 1.0.0-stable
+
+<img src="preview-1-0-0-stable.png" alt="preview" width="400"/>
+
 ## Funcionalidades
 
 - **Responsividade:** Adaptado para diferentes tamanhos de tela (desktop e mobile).
