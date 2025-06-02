@@ -1,5 +1,3 @@
-Divirta-se estudando o algoritmo e jogando!
-
 # Jogo da Trilha (Nine Men's Morris)
 
 Bem-vindo ao Jogo da Trilha! Esta é uma implementação web do clássico jogo de tabuleiro estratégico, também conhecido como Moinho, Morris, Merels, ou Nine Men's Morris. Desenvolvido com React, TypeScript e Tailwind CSS, este projeto oferece uma interface moderna e responsiva para jogar contra outro jogador localmente (PvP) ou contra uma Inteligência Artificial (PvA).
@@ -16,22 +14,41 @@ Bem-vindo ao Jogo da Trilha! Esta é uma implementação web do clássico jogo d
 
 ## Como Executar o Jogo
 
-Para executar o Jogo da Trilha, siga estes passos simples:
+Para executar o Jogo da Trilha localmente, você precisará servi-lo através de um servidor HTTP local. Abrir o arquivo `index.html` diretamente no navegador (usando o protocolo `file:///`) **não funcionará corretamente** porque o projeto utiliza TypeScript, JSX e módulos ES6, que os navegadores não conseguem processar diretamente sem um servidor ou um passo de compilação.
 
-1.  **Clone o repositório (se aplicável) ou baixe os arquivos:**
-    Se você estiver visualizando este projeto em um ambiente que simula um servidor web, geralmente basta carregar o arquivo `index.html`.
+Siga estes passos:
 
-2.  **Abra o arquivo `index.html` no seu navegador:**
-    - Navegue até o diretório onde os arquivos do jogo estão localizados.
-    - Clique duas vezes no arquivo `index.html` ou use a opção "Abrir com" do seu navegador.
+1.  **Certifique-se de ter os arquivos do projeto:**
+
+    - Se você clonou um repositório, navegue até a pasta do projeto.
+    - Se você baixou os arquivos, coloque-os todos em uma mesma pasta.
+
+2.  **Abra um terminal ou prompt de comando** na pasta raiz do projeto (onde o arquivo `index.html` está localizado).
+
+3.  **Inicie um servidor HTTP local simples.** Aqui estão algumas opções comuns:
+
+    - **Se você tem Node.js e npm instalados (recomendado):**
+      Você pode usar o pacote `serve` que é muito prático. Se não o tiver globalmente, pode usar com `npx`:
+
+      ```bash
+      npx serve
+      ```
+
+      Ele geralmente iniciará o servidor em `http://localhost:3000` (ou outra porta, que será exibida no terminal).
+
+    - **Usando a extensão "Live Server" no VS Code:**
+      Se você estiver usando o Visual Studio Code, pode instalar a extensão "Live Server". Depois de instalada, clique com o botão direito no arquivo `index.html` e escolha "Open with Live Server".
+
+4.  **Abra o jogo no seu navegador:**
+    Após iniciar o servidor, o terminal indicará o endereço (URL) onde o jogo está sendo servido (por exemplo, `http://localhost:3000` ou `http://localhost:8000`). Abra este endereço no seu navegador.
 
 O jogo deve carregar e você poderá escolher o modo de jogo na tela inicial.
 
-**Dependências:**
+**Dependências (para o navegador):**
 
 - O jogo utiliza Tailwind CSS para estilização, que é carregado via CDN.
-- React e ReactDOM são carregados via ESM (`esm.sh`).
-- Não há necessidade de instalação de pacotes via `npm` ou `yarn` para a execução básica a partir dos arquivos fornecidos.
+- React e ReactDOM são carregados via ESM (`esm.sh`) através de um import map no `index.html`.
+- **Importante:** Embora as dependências de React sejam carregadas via CDN, o seu código-fonte (`.tsx`) precisa ser servido por HTTP para que os imports de módulos e o próprio JavaScript funcionem como esperado no navegador. A transpilação do JSX/TypeScript do seu código _não_ acontece magicamente no navegador sem um servidor ou ferramentas de build; neste setup, contamos com o navegador moderno para lidar com os módulos JavaScript (`.js` ou, no caso do React via `esm.sh`, já transpilado), mas o ponto de entrada `index.tsx` e seus imports relativos ainda são problemáticos via `file:///`. Um servidor HTTP local resolve a maioria dessas questões para desenvolvimento.
 
 ## Documentação de Aspectos Importantes
 
