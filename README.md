@@ -12,43 +12,47 @@ Bem-vindo ao Jogo da Trilha! Esta é uma implementação web do clássico jogo d
 - **Feedback Visual:** Destaques visuais para peças selecionadas, movimentos válidos e mensagens de status claras.
 - **IA com "Pensamento":** A IA possui um pequeno atraso aleatório para simular o tempo de raciocínio.
 
-## Como Executar o Jogo
+## Como Executar o Jogo Localmente
 
-Para executar o Jogo da Trilha localmente, você precisará servi-lo através de um servidor HTTP local. Abrir o arquivo `index.html` diretamente no navegador (usando o protocolo `file:///`) **não funcionará corretamente** porque o projeto utiliza TypeScript, JSX e módulos ES6, que os navegadores não conseguem processar diretamente sem um servidor ou um passo de compilação.
+Para executar o Jogo da Trilha localmente, você precisará de Node.js e npm (ou yarn/pnpm) instalados. O projeto utiliza Vite como servidor de desenvolvimento, que lida com a transpilação de TypeScript/JSX e oferece uma ótima experiência de desenvolvimento.
 
 Siga estes passos:
 
-1.  **Certifique-se de ter os arquivos do projeto:**
+1.  **Clone o repositório ou baixe os arquivos:**
+    Certifique-se de ter todos os arquivos do projeto em uma pasta no seu computador.
 
-    - Se você clonou um repositório, navegue até a pasta do projeto.
-    - Se você baixou os arquivos, coloque-os todos em uma mesma pasta.
+2.  **Abra um terminal ou prompt de comando** na pasta raiz do projeto.
 
-2.  **Abra um terminal ou prompt de comando** na pasta raiz do projeto (onde o arquivo `index.html` está localizado).
+3.  **Instale as dependências do projeto:**
+    Execute o comando abaixo para instalar as ferramentas de desenvolvimento necessárias (como Vite e TypeScript) e as bibliotecas React.
 
-3.  **Inicie um servidor HTTP local simples.** Aqui estão algumas opções comuns:
+    ```bash
+    npm install
+    ```
 
-    - **Se você tem Node.js e npm instalados (recomendado):**
-      Você pode usar o pacote `serve` que é muito prático. Se não o tiver globalmente, pode usar com `npx`:
+    (Ou `yarn install` se você usa Yarn, ou `pnpm install` se usa PNPM)
 
-      ```bash
-      npx serve
-      ```
+4.  **Inicie o servidor de desenvolvimento Vite:**
+    Após a instalação das dependências, execute:
 
-      Ele geralmente iniciará o servidor em `http://localhost:3000` (ou outra porta, que será exibida no terminal).
+    ```bash
+    npm run dev
+    ```
 
-    - **Usando a extensão "Live Server" no VS Code:**
-      Se você estiver usando o Visual Studio Code, pode instalar a extensão "Live Server". Depois de instalada, clique com o botão direito no arquivo `index.html` e escolha "Open with Live Server".
+    (Ou `yarn dev` / `pnpm dev`)
 
-4.  **Abra o jogo no seu navegador:**
-    Após iniciar o servidor, o terminal indicará o endereço (URL) onde o jogo está sendo servido (por exemplo, `http://localhost:3000` ou `http://localhost:8000`). Abra este endereço no seu navegador.
+5.  **Abra o jogo no seu navegador:**
+    Vite iniciará o servidor e exibirá um endereço local no terminal (geralmente `http://localhost:5173`). Abra este endereço no seu navegador.
 
 O jogo deve carregar e você poderá escolher o modo de jogo na tela inicial.
 
-**Dependências (para o navegador):**
+**Notas sobre as dependências:**
 
-- O jogo utiliza Tailwind CSS para estilização, que é carregado via CDN.
-- React e ReactDOM são carregados via ESM (`esm.sh`) através de um import map no `index.html`.
-- **Importante:** Embora as dependências de React sejam carregadas via CDN, o seu código-fonte (`.tsx`) precisa ser servido por HTTP para que os imports de módulos e o próprio JavaScript funcionem como esperado no navegador. A transpilação do JSX/TypeScript do seu código _não_ acontece magicamente no navegador sem um servidor ou ferramentas de build; neste setup, contamos com o navegador moderno para lidar com os módulos JavaScript (`.js` ou, no caso do React via `esm.sh`, já transpilado), mas o ponto de entrada `index.tsx` e seus imports relativos ainda são problemáticos via `file:///`. Um servidor HTTP local resolve a maioria dessas questões para desenvolvimento.
+- **Vite:** É um servidor de desenvolvimento moderno e rápido que compila e serve seu código TypeScript/JSX conforme necessário.
+- **Tailwind CSS:** Carregado via CDN no `index.html` para estilização.
+- **React & ReactDOM:** Embora o `index.html` use um `importmap` para carregar React/ReactDOM via `esm.sh` para o navegador, tê-los listados no `package.json` auxilia o Vite em seu processo de desenvolvimento e otimizações.
+
+Este método garante que o código `.tsx` seja corretamente processado antes de ser enviado ao navegador, resolvendo os problemas de tela branca e erros de MIME type.
 
 ## Documentação de Aspectos Importantes
 
@@ -144,9 +148,11 @@ A IA joga como Jogador 2 no modo `PVA`. A lógica de decisão da IA é implement
 │   └── useTrilhaGame.ts        # Lógica principal e estado do jogo
 ├── App.tsx                     # Componente principal da aplicação, gerencia telas
 ├── constants.ts                # Constantes do jogo (coordenadas, linhas de trilha, mensagens)
-├── index.html                  # Arquivo HTML principal
-├── index.tsx                   # Ponto de entrada da aplicação React
+├── index.html                  # Arquivo HTML principal, ponto de entrada para Vite
+├── index.tsx                   # Ponto de entrada da aplicação React (referenciado por index.html)
 ├── types.ts                    # Definições de tipos TypeScript
 ├── metadata.json               # Metadados da aplicação
+├── package.json                # Define dependências e scripts do projeto
+├── vite.config.ts              # Configuração do Vite
 └── README.md                   # Este arquivo
 ```
